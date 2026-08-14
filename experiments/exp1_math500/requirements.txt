@@ -1,0 +1,8 @@
+torch>=2.1
+transformers==4.38.2
+accelerate
+datasets
+sympy
+tqdm
+pandas
+matplotlib
