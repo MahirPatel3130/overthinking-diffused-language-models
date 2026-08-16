@@ -51,17 +51,21 @@ def main():
         print(f"Median first_correct_step: {ever_correct['first_correct_step'].median():.2f}")
         print(f"Mean post_arrival_fraction: {ever_correct['post_arrival_fraction'].mean():.3f}")
 
-        # answer regression breakdown, among problems that were ever correct
-        stayed_correct = (ever_correct["final_correct"] & ~ever_correct["changed_after_arrival"]).sum()
-        temporarily_wrong_but_recovered = (ever_correct["final_correct"] & ever_correct["changed_after_arrival"]).sum()
-        ended_wrong = (~ever_correct["final_correct"]).sum()
+        final_correct_bool = ever_correct["final_correct"].astype(bool)
+        changed_bool = ever_correct["changed_after_arrival"].astype(bool)
+
+        stayed_correct = (final_correct_bool & ~changed_bool).sum()
+        temporarily_wrong_but_recovered = (final_correct_bool & changed_bool).sum()
+        ended_wrong = (~final_correct_bool).sum()
+        assert stayed_correct + temporarily_wrong_but_recovered + ended_wrong == n_ever_correct, (
+            "category counts don't sum to n_ever_correct -- something is still wrong"
+        )
 
         print("\nAmong problems where the correct answer appeared before the final step:")
         print(f"  stayed correct:              {stayed_correct} ({100 * stayed_correct / n_ever_correct:.1f}%)")
         print(f"  temporarily wrong, recovered: {temporarily_wrong_but_recovered} ({100 * temporarily_wrong_but_recovered / n_ever_correct:.1f}%)")
         print(f"  ended incorrect:              {ended_wrong} ({100 * ended_wrong / n_ever_correct:.1f}%)")
 
-        # histogram
         plt.figure(figsize=(7, 4))
         plt.hist(ever_correct["first_correct_step"], bins=20, edgecolor="black")
         plt.xlabel("First correct step")
@@ -72,7 +76,6 @@ def main():
         plt.savefig(hist_path, dpi=150)
         print(f"\nSaved histogram to {hist_path}")
 
-    # results table matching the design doc's format
     table = df.copy()
     table["Changed After?"] = table["changed_after_arrival"].map({True: "Yes", False: "No"}).fillna("—")
     table["Post-Arrival %"] = table["post_arrival_fraction"].apply(
