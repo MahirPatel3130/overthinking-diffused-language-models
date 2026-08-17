@@ -93,6 +93,7 @@
 *.pot
 *.py.cover
 *.py[codz]
+*.pyc
 *.rdb
 *.sage.py
 *.so
@@ -136,6 +137,7 @@ __marimo__/
 __pycache__/
 __pypackages__/
 activemq-data/
+artifacts/
 build/
 celerybeat-schedule
 celerybeat.pid
@@ -163,6 +165,7 @@ marimo/_lsp/
 marimo/_static/
 mnesia/
 nosetests.xml
+out_*.ipynb
 parts/
 pip-delete-this-directory.txt
 pip-log.txt
