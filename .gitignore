@@ -98,6 +98,7 @@
 *.sage.py
 *.so
 *.spec
+*.tar.gz
 .Python
 .abstra/
 .cache
@@ -155,6 +156,8 @@ eggs/
 env.bak/
 env/
 experiment2/results/
+experiments/experiment2/results_*/problem_summary.*
+experiments/experiment2/results_gate/
 htmlcov/
 instance/
 ipython_config.py

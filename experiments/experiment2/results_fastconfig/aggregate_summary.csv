@@ -1,0 +1,2 @@
+n_problems,n_ever_correct,ever_correct_pct,n_stayed_correct,stayed_correct_pct,n_temporarily_wrong,temporarily_wrong_pct,n_ended_wrong,ended_wrong_pct,partial_commit_flips,extractor_jump_flips,other_flips
+1319,656,49.73464746019712,599,91.3109756097561,36,5.487804878048781,21,3.201219512195122,413,142,57
