@@ -1,0 +1,14 @@
+{
+  "ended_wrong_pct": 4.166666666666666,
+  "ever_correct_pct": 84.0,
+  "extractor_jump_flips": 94,
+  "n_ended_wrong": 7,
+  "n_ever_correct": 168,
+  "n_problems": 200,
+  "n_stayed_correct": 32,
+  "n_temporarily_wrong": 129,
+  "other_flips": 24,
+  "partial_commit_flips": 442,
+  "stayed_correct_pct": 19.047619047619047,
+  "temporarily_wrong_pct": 76.78571428571429
+}
